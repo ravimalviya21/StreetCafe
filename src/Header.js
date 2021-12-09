@@ -5,6 +5,7 @@ import HomeImg from './Images/HomeImg.svg';
 import Like from './Icons/Like.svg';
 import Shield from './Icons/Shield.svg';
 import {user1, user2, user3, user4, user5} from './Images';
+import Trending from './Components/Trending';
 
 const Header = () => {
     const users =  [ {user : user1}, {user : user3}, {user : user5}, {user: user4}, {user : user2} ]
@@ -41,9 +42,9 @@ const Header = () => {
                         </div>
                 </div>
                 <div className="container-fluid">
-                    <div className="row w-100 vh-100 justify-content-between"> 
-                        <div className="offset-1 h-75 d-flex flex-column justify-content-evenly col-5">
-                            <div className="row">
+                    <div className="row w-100 home justify-content-between"> 
+                        <div className="offset-1 h-100 d-flex flex-column justify-content-evenly col-5">
+                            <div className="row head-slogan1">
                                 <p className="head-slogan display-5">
                                 wake up your<br></br>taste buds.
 
@@ -60,7 +61,7 @@ const Header = () => {
                                 </div>
                             </div>
                             <div className="row extras">
-                                <div className="col-6">
+                                <div className="col-6 extras">
                                     <div className="row left-extra">
                                         <div className="col-1">
                                             <img src={Shield}></img>
@@ -109,6 +110,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+                <Trending></Trending>
         </React.Fragment>
     )
 }
