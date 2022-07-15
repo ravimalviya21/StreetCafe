@@ -1,16 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Logo from './Icons/Logo.svg';
 import ShoppingCart from './Icons/ShoppingCart.svg';
-import HomeImg from './Images/HomeImg.svg';
-import Like from './Icons/Like.svg';
-import Shield from './Icons/Shield.svg';
-import {user1, user2, user3, user4, user5} from './Images';
-import Trending from './Components/Trending';
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 
 const Header = () => {
-    const users =  [ {user : user1}, {user : user3}, {user : user5}, {user: user4}, {user : user2} ]
+
+    const[visible, setVisible] = useState(true);
+    const navigate = useLocation();
+    const login = useNavigate();
+
+    
+    useEffect(() => 
+    {
+        if(navigate.pathname == "/")
+        {   
+            setVisible(true);
+        }
+    } ,[navigate.pathname])
+
+    function toggleNav()
+    {
+        console.log("called")
+        login('/login')
+        setVisible(false)
+    }
+
     return(
         <React.Fragment>
+            {
+                visible ? 
                 <div className="header"> 
                         <div className="logo">
                             <img src={Logo}></img>
@@ -19,10 +37,10 @@ const Header = () => {
                         <div className="nav">
                             <div className="nav-inner">
                                 <div>
-                                    <div>home</div>
-                                    <div>store</div>
-                                    <div>deals</div>
-                                    <div>about us</div>
+                                   <Link to="/"> <div>home</div></Link>
+                                   <Link to="/store"> <div>store</div> </Link>
+                                   <Link to="/deals"> <div>deals</div> </Link>
+                                   <Link to="/aboutUs"> <div>aboutUs</div> </Link>
                                 </div>
                             </div>
                         </div>
@@ -36,81 +54,12 @@ const Header = () => {
                         </div> 
 
                         <div className="login">
-                            <div className="login-bg">
-                                log in
+                            <div onClick={() => toggleNav()} className="login-bg">
+                                {/* <Link>Log in</Link> */} log in
                             </div>
                         </div>
                 </div>
-                <div className="container-fluid">
-                    <div className="row w-100 home justify-content-between"> 
-                        <div className="offset-1 h-100 d-flex flex-column justify-content-evenly col-5">
-                            <div className="row head-slogan1">
-                                <p className="head-slogan display-5">
-                                wake up your<br></br>taste buds.
-
-                                </p>
-                            </div>
-                            <div className="row head-slogan2 text-center">
-                                <p>relax. refresh, recharge!</p>
-                            </div>
-                            <div className="row order-outer">
-                                <div className="col-6">
-                                    <div className="order-now text-capitalize">
-                                        order now
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row extras">
-                                <div className="col-6 extras">
-                                    <div className="row left-extra">
-                                        <div className="col-1">
-                                            <img src={Shield}></img>
-                                        </div>
-                                        <div className="col-10">
-                                            100% secure checkout
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="row left-extra">
-                                        <div className="col-2">
-                                            <img src={Like}></img>
-                                        </div>
-                                        <div className="col-10 d-flex text-capitalize">
-                                            24x7 available
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="row users">
-                                    <div className=" users-inner">
-                                        <div className="user-profile">
-                                            {
-                                                users.map((x) => 
-                                            <div className="user-circle">
-                                                <img src={x.user}></img>
-                                            </div>
-                                                    )    }
-                                        </div>
-                                        <div className="user-reviews text-capitalize">
-                                        <span>4500+</span><br></br>
-                                        Happy Customers
-                                        </div>
-                                    </div>
-                
-                            </div>
-        
-                        </div>
-
-
-                        <div className="col-6" style={{overflowX : "hidden"}}>
-                                 <img src={HomeImg} style={{width : "115%"}}></img>
-                          
-                        </div>
-                    </div>
-                </div>
-                <Trending></Trending>
+          : null  }
         </React.Fragment>
     )
 }

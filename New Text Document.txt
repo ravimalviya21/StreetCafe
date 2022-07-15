@@ -1,0 +1,9 @@
+<div className="d-flex align-items-end position-relative justify-content-center">
+                       <div className="d-flex align-items-end justify-content-center">
+                           <div className="w-75 h-75 d-flex flex-column justify-content-evenly">
+                               <div className="text-muted text-start">{x.desc}</div>
+                                <div>{x.name}</div>
+                           </div>
+                       </div>
+                       <div className="position-absolute rounded-circle"><img src={x.img}></img></div>
+                   </div>

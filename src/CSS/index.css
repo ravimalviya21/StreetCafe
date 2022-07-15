@@ -13,6 +13,23 @@
     --primary-color : #D16014;
     --bg-color : #292627;
 }
+::-webkit-scrollbar
+{
+    width :3px;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color :var(--primary-color);
+    border-radius : 50px;
+}
+::-webkit-scrollbar-track
+{
+    visibility : hidden;
+}
+::-webkit-scrollbar-corner
+{
+    visibility : visible;
+}
 .header
 {
     width : 85%;
@@ -22,6 +39,11 @@
     justify-content : space-between;
     height : 22vh;
     align-items : center;
+}
+.header-hidden
+{
+    visibility :hidden;
+    position : absolute;
 }
 .nav
 {
@@ -38,6 +60,10 @@
     display : flex;
     align-items : center;
     justify-content : center;
+}
+.nav-inner div a
+{
+    text-decoration : none;
 }
 .nav-inner div
 {
@@ -114,6 +140,11 @@
     font-weight : 500;
     border-radius : 0.5rem;
     cursor : pointer;
+}
+.login-bg a
+{
+    color : white;
+    text-decoration : none;
 }
 .login-bg:hover
 {
@@ -302,93 +333,524 @@
     font-weight : 200;
     color : white;
 }
-.controls-outer > div:hover
+.controls-outer div:hover
 {
-    background-color : rgb(92, 92, 92);
-    transition : 1s ease;
+    background-color :rgba(255,255,255, 0.9);
+    height : 4rem;
+    width : 4rem;
+    transition : 300ms ease;    
+}
+.left-control:hover.left-control i
+{
+    color : black;
+}
+.right-control:hover.right-control i
+{
     color : black;
 }
 .top-rated-items
 {
-    /* background-color : white; */
-    height: 65%;
+    height: 75%;
     width : 87%;
-    display : grid;
-    grid-auto-columns : 1fr;
+    position: relative;
+}
+.top-rated-inner
+{
+    margin : 0 0 0 5.5rem;
 }
 .slider
 {
     width : 100%;
     height : 100%;
-    display: grid;
-    align-items : center;
-    justify-content : space-evenly;
-    grid-template-columns : repeat(3, 3fr);
-}
-.slider-item
-{
-    width : 95%;
-    height: 100%;
-    display :flex;
-    align-items : center;
-    justify-content : center;
+    background-color : white;
     position : relative;
-    font-family : var(--primary-font);
 }
-.slider-item-inner
+
+.slick-slider, .slick-list, .slick-track
+{
+    height : 100%;
+}
+
+
+.items-inner2 > div:first-child
+{
+   width : 100%;
+   height : 100%;
+   display : flex;
+   align-items : center;
+   justify-content : center;
+   position : relative;
+}
+.item-card
 {
     background-color : #4B4748;
-    width : 75%;
     height : 80%;
-    border-radius : 50% 0 50% 20%;
-}
-.slider-image div img
-{
-    width : 85px;    
-}
-.slider-image
-{
-    width : 7.5rem;
-    height : 7.5rem;
-    background-color : #D7E79B;
-    position : absolute;
-    border-radius : 50%;
-    top : 2%;
-    right : 10%;
-    border : 8px solid var(--bg-color);
-}
-.bag
-{
-    width : 4.5rem;
-    height : 4.5rem;
-    position : absolute;
-    background-color : #D7E79B;
-    border-radius : 50%;
-    bottom : 0%;
-    cursor : pointer;
-}
-.slider-item-inner > div
-{
-    height : 40%;
     width : 70%;
+    border-radius : 15rem 9rem 11rem 5rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
 }
-.slider-item-inner > div > div:first-child
+.upper-details
+{
+    height : 50%;
+    width : 60%;
+    margin : 1.6rem 1.8rem 0 0;
+}
+.upper-details > div:first-child
+{
+    color : white;
+    font-family : var(--primary-font);
+}
+.upper-details > div:nth-child(3)
 {
     color : #D7E79B;
 }
-.slider-item-inner > div > div:nth-child(3)
+.ratings > div
 {
-    color : #D7E79B;
+    margin : 0 1rem 0 0;
 }
-.slider-item-inner > div > div:last-child
+.ratings
+{
+    height : 10%;
+}
+.item-card > div:first-child
+{
+    height : 65%;
+    width : 85%;
+    /* background-color : red; */
+}
+.item-card-circle
+{
+    height : 35%;
+    width : 35%;
+    right : 10%;
+    top : 3%;
+    border-radius : 50%;
+    background-color : #D7E79B;
+    position : absolute;
+    border : 0.5rem solid var(--bg-color);
+    display : flex;
+    align-items : center;
+    justify-content : center;
+}
+.item-buy-button
+{
+    height: 5rem;
+    width : 5rem;
+    bottom : 0;
+    border-radius : 50%;
+    background-color : #D7E79B;
+    position : absolute;
+    border : 0.5rem solid var(--bg-color);
+}
+.items-slide-new
+{
+    height : 100%;
+    position : absolute;
+    box-sizing : border-box;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+}
+.items-inner
+{
+    height : 100%;
+    width : 388px;
+    display : flex;
+    align-items :center;
+    justify-content : center;
+}
+.ratings > div:first-child
 {
     color : white;
 }
-.bag
+.items-inner2
 {
-    border : 6px solid var(--bg-color);
+    height : 100%;
+    width : 100%;
 }
-.bag img
+
+.offer-template
 {
-    width : 2rem;
+    width : 80%;
+    height : 50%;
+    /* background-color : white; */
+}
+.offer-template > div:first-child
+{
+    width : 1085px;
+    height : 100%;
+}
+.offer-template > div img
+{
+    width : 100%;
+    height : 100%;
+    object-fit : cover;
+    object-position : center;
+}
+.features-text > div:first-child
+{
+    font-family : var(--secondry-font);
+    font-size : 2.5rem;
+    color : white;
+}
+.features-text > div:last-child
+{
+    font-family : var(--primary-font);
+    font-size : 1.5rem;
+    color : white;
+}
+.features-text + div
+{
+    width : 85%;
+    height : 65%;
+} 
+.features-text + div > div > div:nth-child(2)
+{
+    font-size : 1.5rem;
+    color : white;
+    font-family : var(--primary-font);
+} 
+.features-text + div > div > div:nth-child(3)
+{
+    font-family : var(--primary-font);
+} 
+.testimonial
+{
+    display : flex;
+    flex-direction : row;
+}
+.heading 
+{
+    margin : 0 5rem 0 0;
+}
+.review-card-outer
+{
+    width : 600px;
+    height : 100%;
+}
+.review-card-inner
+{
+    width : 80%;
+    height : 80%;
+    background-color : #4B4748;
+    border-radius : 2rem;
+}
+.img-bg
+{
+    width : 120px;
+    height : 120px;
+    /* background-color : yellow; */
+    top : 8%;
+    border : 0.5rem solid var(--bg-color);
+}
+.img-bg img
+{
+    width : 100%;
+    height : 100%;
+    object-fit : cover;
+    object-position : center;
+}
+.testimonial-slider > div > div:first-child
+{
+    font-family : var(--primary-font);
+}
+.testimonial-slider > div > div :first-child > div:last-child
+{
+    color : white;
+    font-weight : bold;
+}
+/* .testimonial-slider > div > div:last-child::before
+{
+    content : "";
+    background-color : red;
+    width : 20px;
+    height : 20px;
+    position : absolute;
+}
+.testimonial-slider > div > div:last-child::after
+{
+    content : "";
+    background-color : orange;
+    width : 30px;
+    height : 30px;
+    position : absolute;
+    right : -36%;
+    top : 55%;
+    border-radius : 50%;
+    box-shadow : 0px -17px 0 0px brown;
+} */
+
+.footer-section > div:first-child
+{
+    background-color : #4B4748;
+}
+.footer-section ul
+{
+    list-style : none;
+    font-family : var(--primary-font);
+    color : white;
+
+}
+.footer-section ul > li:first-child
+{
+    font-weight : bold;
+}
+
+/* --------------------- CSS FOR LOG IN PAGE --------------- */
+ .login-container
+ {
+     height : 100vh;
+     width : 100%;
+     background-color : var(--bg-color);
+     display : flex;
+ }
+ .login-container > div:first-child
+ {
+     width : 50%;
+     height : 100%;
+     /* background-color : red; */
+ }
+ .login-container > div:last-child
+ {
+    width : 50%;
+    height: 100%;
+    /* background-color : blue; */
+ }
+ .login-container > div:last-child > div
+ {
+     /* background-color : white; */
+     height : 90%;
+     width : 80%;
+ }
+ .login-container > div:last-child > div > div:first-child
+ {
+     height : 18%;
+     width : 100%;
+     /* background-color : pink; */
+ }
+ .cross
+ {
+     height : 40%;
+     /* background-color : yellow; */
+     width : 100%;
+ }
+ .cross > div
+ {
+    background-color : #302F2F;
+    height :100%;
+    width : 3rem;
+    font-size : 2rem;
+    border-radius : 0.5rem;
+    color : white;
+    cursor : pointer;
+ }
+ .cross > div:hover
+ {
+     background-color : var(--active-color);
+     transition : 0.5s ease;
+ }
+ .login-head
+ {
+     font-family : var(--primary-font);
+     font-weight :600;
+     color : var(--primary-color);
+ }
+ .login-inner-container
+ {
+     height : 78%;
+     width : 100%;
+     overflow : auto;
+ }
+ form
+ {
+     width : 100%;
+     height : 100%
+ }
+ form > div
+ {
+     height : 100%;
+     width : 80%;
+     /* background-color : yellow; */
+ }
+ form > div > div:last-child
+ {
+     height : 40%;
+     width : 100%;
+     /* background-color : aqua; */
+ }
+ form > div > div
+ {
+     height : 50%;
+     width : 100%;
+     /* background-color : aqua; */
+ }
+ .input-email, .input-pass
+ {
+     width : 100%;
+     height : 50%;
+     /* background-color : rebeccapurple; */
+ }
+ .input-email label, .input-pass
+ {
+     font-size : 1rem;
+     text-transform : capitalize;
+     color : white;
+ }
+ .input-pass > div:last-child, .input-email > div:last-child
+ {
+     height : 40%;
+ }
+ .input-pass input, .input-email input
+ {
+     width : 100%;
+     height : 100%;
+     border-radius : 1.5rem;
+     border-width : 1px;
+     font-size : 1rem;
+     padding : 0 0 0 8px;
+     background-color : transparent;
+     border-color :  rgba(255,255,255,0.2);
+     color : white;
+ }
+ .input-email input:focus , .input-pass input:focus
+{
+    border-color :  rgba(255,255,255,0.2);
+    border-width : 1px;  
+}
+form
+{
+    font-family : var(--primary-font);
+}
+form > div > div > div:nth-child(3) > div:first-child
+{
+    width : 36%;
+}
+form > div > div > div:nth-child(3) > div:first-child > div:last-child:hover
+{
+    color : #0d6efd;
+    cursor : pointer;
+    transition : 0.5s ease;
+}
+form > div > div > div:nth-child(3) > div:last-child:hover
+{
+    color : #dc3545;
+    transition : 0.5s ease;
+    cursor : pointer;
+}
+.login-button
+{
+    height : 3.3rem;
+    width : 100%;
+    background-color : var(--active-color);
+    border-radius : 0.5rem;
+    cursor : pointer;
+    font-size : 1.2rem;
+}
+.login-button + div 
+{
+    width : 100%;
+    height : 3.3rem;
+    background-color : white;
+    border-radius : 0.5rem;
+    cursor : pointer;
+    margin : 12px 0;
+}
+.login-button + div:hover
+{
+    background-color : transparent;
+    border : 1px solid white;
+    transition : 0.5s ease;
+    color : white;
+}
+.login-button + div > div
+{
+    width : 45%;
+}
+.login-button + div + div
+{
+    cursor : pointer;
+    color : white;
+}
+.login-button + div + div:hover
+{
+    color : #ffc107;
+    transition : 0.5s ease;
+}
+.login-container > div:first-child > div
+{
+    width : 100%;
+    height : 100%;
+}
+.login-container > div:first-child > div > div
+{
+    width : 100%;
+    height : 100%;
+}
+
+/* -------------- CSS FOR SIGN UP PAGE ----------- */
+.signup-inner-container
+ {
+     height : 230%;
+     width : 80%;
+ }
+ .signup-inner-container > div:first-child
+ {
+     height : 200%;
+     width : 100%;
+ }
+
+ /* -------------- FORGET PASSWORD CSS ---------- */
+ .forget-inner-container
+ {
+     height : 100%;
+     width : 80%;
+ }
+ .forget-inner-container > div:first-child
+ {
+     height : 45%;
+ }
+ .forget-inner-container > div:last-child
+ {
+     height : 45%;
+ }
+ .reset-button
+ {
+    height : 3.3rem;
+    width : 100%;
+    background-color :#dc3545;
+    border-radius : 0.5rem;
+    cursor : pointer;
+    font-size : 1.2rem;
+ }
+
+/* ------------------- UPDATE PASSWORD ------------------ */
+.updatepass-inner-container
+{
+    height : 100%;
+    width : 80%
+}
+.updatepass-inner-container > div:first-child
+{
+    height : 47%;
+}
+.updatepass-inner-container > div:last-child
+{
+    height : 20%;
+}
+
+/* --------------------- CONFIRMATION EMAIL PASS ---------------- */
+.confirmation-inner-container
+{
+    height : 70%;
+    width : 80%;
+}
+.confirmation-inner-container > div:first-child
+{
+    height : 70%;
+}
+.confirmation-inner-container > div:last-child
+{
+    height : 15%;
 }
